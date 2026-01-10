@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${room.id != null} ? 'Edit Room - Rent A Room' : 'Create Room - Rent A Room'">Create Room</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="~{layout :: navbar}"></div>
+    
+    <main class="main-content">
+        <div th:if="${error}" class="alert alert-error">
+            <span th:text="${error}"></span>
+        </div>
+        <div th:if="${message}" class="alert alert-success">
+            <span th:text="${message}"></span>
+        </div>
+        
+        <section class="form-section">
+            <div class="container">
+                <div class="form-card">
+                    <h2 th:text="${room.id != null} ? 'Edit Room' : 'Create New Room Listing'">Create Room</h2>
+                    <form th:action="${room.id != null ? '/rooms/edit/' + room.id : '/rooms/create'}" 
+                          th:object="${room}" method="post">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" th:field="*{title}" required>
+                            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-text"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" th:field="*{description}" rows="5"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" th:field="*{location}" required>
+                            <span th:if="${#fields.hasErrors('location')}" th:errors="*{location}" class="error-text"></span>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="price">Price per Night ($)</label>
+                                <input type="number" id="price" th:field="*{price}" step="0.01" min="0" required>
+                                <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="error-text"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="capacity">Capacity (Guests)</label>
+                                <input type="number" id="capacity" th:field="*{capacity}" min="1" required>
+                                <span th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}" class="error-text"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bedsAvailable">Beds Available (Leave empty if same as capacity)</label>
+                            <input type="number" id="bedsAvailable" th:field="*{bedsAvailable}" min="1">
+                            <small>For dormitory-style rooms where you rent individual beds</small>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="availableFrom">Available From</label>
+                                <input type="date" id="availableFrom" th:field="*{availableFrom}">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="availableTo">Available To</label>
+                                <input type="date" id="availableTo" th:field="*{availableTo}">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary btn-full">Save Room</button>
+                        <a th:href="@{/dashboard}" class="btn-secondary btn-full">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div th:replace="~{layout :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

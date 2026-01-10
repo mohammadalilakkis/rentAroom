@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Details - Rent A Room</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="~{layout :: navbar}"></div>
+    
+    <main class="main-content">
+        <div th:if="${error}" class="alert alert-error">
+            <span th:text="${error}"></span>
+        </div>
+        <div th:if="${message}" class="alert alert-success">
+            <span th:text="${message}"></span>
+        </div>
+        
+        <div>
+        <section class="room-detail-section">
+            <div class="container">
+                <div class="room-detail" th:if="${room}">
+                    <div class="room-detail-header">
+                        <h1 th:text="${room.title}">Room Title</h1>
+                        <p class="room-location">📍 <span th:text="${room.location}">Location</span></p>
+                    </div>
+                    
+                    <div class="room-detail-content">
+                        <div class="room-detail-main">
+                            <div class="room-image-large">
+                                <span class="placeholder-image">🏡</span>
+                            </div>
+                            <div class="room-description-full">
+                                <h2>Description</h2>
+                                <p th:text="${room.description} ?: 'No description provided'">Description</p>
+                            </div>
+                            
+                            <div class="room-meta-detail">
+                                <div class="meta-item">
+                                    <strong>Capacity:</strong> <span th:text="${room.capacity}">0</span> guests
+                                </div>
+                                <div class="meta-item" th:if="${room.bedsAvailable != null}">
+                                    <strong>Beds Available:</strong> <span th:text="${room.bedsAvailable}">0</span>
+                                </div>
+                                <div class="meta-item">
+                                    <strong>Available From:</strong> 
+                                    <span th:text="${room.availableFrom != null ? #temporals.format(room.availableFrom, 'MMM dd, yyyy') : 'Immediate'}">Date</span>
+                                </div>
+                                <div class="meta-item" th:if="${room.availableTo != null}">
+                                    <strong>Available To:</strong> 
+                                    <span th:text="${#temporals.format(room.availableTo, 'MMM dd, yyyy')}">Date</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="room-detail-sidebar">
+                            <div class="booking-card">
+                                <div class="price-display">
+                                    <span class="price-amount">$<span th:text="${#numbers.formatDecimal(room.price, 0, 2)}">0</span></span>
+                                    <span class="price-period">per night</span>
+                                </div>
+                                
+                                <form th:action="@{/bookings/create}" method="post" th:if="${user != null && user.role.name() != 'HOST' || user == null}">
+                                    <input type="hidden" name="roomId" th:value="${room.id}">
+                                    
+                                    <div class="form-group">
+                                        <label for="checkIn">Check-in Date</label>
+                                        <input type="date" id="checkIn" name="checkIn" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="checkOut">Check-out Date</label>
+                                        <input type="date" id="checkOut" name="checkOut" required>
+                                    </div>
+                                    
+                                    <div class="form-group" th:if="${room.bedsAvailable != null && room.bedsAvailable > 1}">
+                                        <label for="beds">Number of Beds</label>
+                                        <input type="number" id="beds" name="beds" min="1" th:max="${room.bedsAvailable}" value="1" required>
+                                        <small>Maximum <span th:text="${room.bedsAvailable}">0</span> beds available</small>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn-primary btn-full" th:if="${user != null}">Book Now</button>
+                                    <a th:href="@{/login}" class="btn-primary btn-full" th:if="${user == null}">Login to Book</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+    </main>
+    
+    <div th:replace="~{layout :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>
