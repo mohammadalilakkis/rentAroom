@@ -1,12 +1,15 @@
 package com.rentaroom.controller;
 
 import com.rentaroom.model.Booking;
+import com.rentaroom.model.Payment;
 import com.rentaroom.model.Room;
 import com.rentaroom.model.User;
+import com.rentaroom.repository.PaymentRepository;
 import com.rentaroom.service.BookingService;
 import com.rentaroom.service.RoomService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +26,12 @@ public class BookingController {
     
     @Autowired
     private RoomService roomService;
+    
+    @Autowired
+    private PaymentRepository paymentRepository;
+    
+    @Value("${stripe.public.key}")
+    private String stripePublicKey;
     
     @PostMapping("/create")
     public String createBooking(@RequestParam Long roomId,
@@ -67,7 +76,16 @@ public class BookingController {
             return "redirect:/";
         }
         
-        model.addAttribute("booking", booking.get());
+        Booking bookingObj = booking.get();
+        model.addAttribute("booking", bookingObj);
+        
+        // Check if payment exists
+        Optional<Payment> payment = paymentRepository.findByBooking(bookingObj);
+        payment.ifPresent(p -> model.addAttribute("payment", p));
+        
+        // Add Stripe public key for frontend
+        model.addAttribute("stripePublicKey", stripePublicKey);
+        
         return "booking-detail";
     }
     

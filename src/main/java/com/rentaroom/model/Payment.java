@@ -24,6 +24,12 @@ public class Payment {
     @Column(name = "payment_method", length = 50)
     private String paymentMethod;
     
+    @Column(name = "stripe_payment_intent_id", length = 255)
+    private String stripePaymentIntentId;
+    
+    @Column(name = "stripe_transaction_id", length = 255)
+    private String stripeTransactionId;
+    
     @Column(name = "paid_at")
     private LocalDateTime paidAt;
     
@@ -61,6 +67,12 @@ public class Payment {
             paidAt = LocalDateTime.now();
         }
     }
+    
+    public String getStripePaymentIntentId() { return stripePaymentIntentId; }
+    public void setStripePaymentIntentId(String stripePaymentIntentId) { this.stripePaymentIntentId = stripePaymentIntentId; }
+    
+    public String getStripeTransactionId() { return stripeTransactionId; }
+    public void setStripeTransactionId(String stripeTransactionId) { this.stripeTransactionId = stripeTransactionId; }
     
     public enum PaymentStatus {
         PENDING, PAID, FAILED

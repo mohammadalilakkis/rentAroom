@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <div th:replace="~{layout :: navbar}"></div>
@@ -36,6 +38,45 @@
                         <p><strong>Status:</strong> <span class="status-badge" th:classappend="'status-' + ${booking.status.name().toLowerCase()}" 
                            th:text="${booking.status.name()}">PENDING</span></p>
                     </div>
+                    
+                    <!-- Payment Section -->
+                    <div class="payment-section" th:if="${booking.status.name() == 'PENDING' && (payment == null || payment.status.name() != 'PAID')}">
+                        <h3>Complete Payment</h3>
+                        <p class="payment-amount">Amount to Pay: $<span th:text="${#numbers.formatDecimal(booking.totalPrice, 0, 2)}">0</span></p>
+                        
+                        <div id="payment-form-container">
+                            <form id="payment-form">
+                                <div id="card-element" class="card-element">
+                                    <!-- Stripe Elements will create form elements here -->
+                                </div>
+                                <div id="card-errors" role="alert" class="card-errors"></div>
+                                <button type="submit" id="submit-payment" class="btn-primary">
+                                    <span id="button-text">Pay Now</span>
+                                    <span id="spinner" class="spinner" style="display: none;">Processing...</span>
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <div id="payment-success" style="display: none;" class="alert alert-success">
+                            <p>Payment successful! Your booking has been confirmed.</p>
+                            <a th:href="@{/bookings/my-bookings}" class="btn-primary">View My Bookings</a>
+                        </div>
+                        
+                        <div id="payment-error" style="display: none;" class="alert alert-error">
+                            <p id="error-message"></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Status (if already paid) -->
+                    <div class="payment-status" th:if="${payment != null && payment.status.name() == 'PAID'}">
+                        <div class="alert alert-success">
+                            <h3>Payment Completed</h3>
+                            <p><strong>Payment Date:</strong> <span th:text="${#temporals.format(payment.paidAt, 'MMM dd, yyyy HH:mm')}">Date</span></p>
+                            <p><strong>Payment Method:</strong> <span th:text="${payment.paymentMethod}">Card</span></p>
+                            <p><strong>Transaction ID:</strong> <span th:text="${payment.stripeTransactionId}">-</span></p>
+                        </div>
+                    </div>
+                    
                     <div class="booking-actions">
                         <a th:href="@{/}" class="btn-primary">Browse More Rooms</a>
                         <a th:href="@{/bookings/my-bookings}" class="btn-secondary">View All Bookings</a>
@@ -47,5 +88,186 @@
     
     <div th:replace="~{layout :: footer}"></div>
     <script th:src="@{/js/main.js}"></script>
+    <script th:inline="javascript">
+        // Initialize Stripe
+        const stripe = Stripe(/*[[${stripePublicKey}]]*/ '');
+        const bookingId = /*[[${booking.id}]]*/ 0;
+        const bookingAmount = /*[[${booking.totalPrice}]]*/ 0;
+        
+        // Setup Stripe Elements
+        const elements = stripe.elements();
+        const cardElement = elements.create('card', {
+            style: {
+                base: {
+                    fontSize: '16px',
+                    color: '#32325d',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                    '::placeholder': {
+                        color: '#aab7c4'
+                    }
+                },
+                invalid: {
+                    color: '#fa755a',
+                    iconColor: '#fa755a'
+                }
+            }
+        });
+        
+        cardElement.mount('#card-element');
+        
+        // Handle real-time validation errors from the card Element
+        cardElement.on('change', function(event) {
+            const displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+        
+        // Handle form submission
+        const form = document.getElementById('payment-form');
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const submitButton = document.getElementById('submit-payment');
+            const buttonText = document.getElementById('button-text');
+            const spinner = document.getElementById('spinner');
+            const paymentError = document.getElementById('payment-error');
+            const paymentSuccess = document.getElementById('payment-success');
+            
+            // Disable button and show spinner
+            submitButton.disabled = true;
+            buttonText.style.display = 'none';
+            spinner.style.display = 'inline';
+            paymentError.style.display = 'none';
+            
+            try {
+                // Step 1: Create payment intent
+                const createIntentResponse = await fetch('/api/payments/create-intent', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        bookingId: bookingId,
+                        amount: bookingAmount
+                    })
+                });
+                
+                const intentData = await createIntentResponse.json();
+                
+                if (!createIntentResponse.ok || intentData.message) {
+                    throw new Error(intentData.message || 'Failed to create payment intent');
+                }
+                
+                // Step 2: Confirm payment with Stripe
+                const {error, paymentIntent} = await stripe.confirmCardPayment(intentData.clientSecret, {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: {
+                            // You can add customer details here if needed
+                        }
+                    }
+                });
+                
+                if (error) {
+                    throw new Error(error.message);
+                }
+                
+                // Step 3: Confirm payment on backend
+                const confirmResponse = await fetch('/api/payments/confirm', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        paymentIntentId: paymentIntent.id
+                    })
+                });
+                
+                const confirmData = await confirmResponse.json();
+                
+                if (!confirmResponse.ok || confirmData.message && confirmData.message.includes('Error')) {
+                    throw new Error(confirmData.message || 'Failed to confirm payment');
+                }
+                
+                // Success!
+                document.getElementById('payment-form-container').style.display = 'none';
+                paymentSuccess.style.display = 'block';
+                
+                // Reload page after 2 seconds to show updated status
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Payment error:', error);
+                document.getElementById('error-message').textContent = error.message || 'An error occurred during payment';
+                paymentError.style.display = 'block';
+                
+                // Re-enable button
+                submitButton.disabled = false;
+                buttonText.style.display = 'inline';
+                spinner.style.display = 'none';
+            }
+        });
+    </script>
+    <style>
+        .payment-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        .payment-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .payment-amount {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .card-element {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .card-errors {
+            color: #fa755a;
+            font-size: 14px;
+            margin-bottom: 1rem;
+            min-height: 20px;
+        }
+        
+        #submit-payment {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        #submit-payment:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .spinner {
+            display: inline-block;
+        }
+        
+        .payment-status {
+            margin-top: 2rem;
+        }
+    </style>
 </body>
 </html>
