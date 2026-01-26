@@ -20,19 +20,33 @@ public class AuthController {
     private UserService userService;
     
     @GetMapping("/register")
-    public String showRegisterForm(Model model) {
+    public String showRegisterForm(Model model, HttpSession session) {
         model.addAttribute("user", new User());
+        User currentUser = (User) session.getAttribute("user");
+        model.addAttribute("isEditor", currentUser != null && currentUser.getRole() == User.Role.ADMIN);
         return "register";
     }
     
     @PostMapping("/register")
-    public String register(@Valid @ModelAttribute User user, BindingResult result, Model model) {
+    public String register(@Valid @ModelAttribute User user, BindingResult result, Model model, HttpSession session) {
         if (result.hasErrors()) {
+            User currentUser = (User) session.getAttribute("user");
+            model.addAttribute("isEditor", currentUser != null && currentUser.getRole() == User.Role.ADMIN);
+            return "register";
+        }
+        
+        // Prevent non-admins from registering as admin
+        User currentUser = (User) session.getAttribute("user");
+        if (user.getRole() == User.Role.ADMIN && (currentUser == null || currentUser.getRole() != User.Role.ADMIN)) {
+            model.addAttribute("error", "Admin registration is only available to existing administrators.");
+            model.addAttribute("isEditor", false);
+            user.setRole(User.Role.RENTER); // Reset to default
             return "register";
         }
         
         if (userService.existsByEmail(user.getEmail())) {
             model.addAttribute("error", "Email already exists");
+            model.addAttribute("isEditor", currentUser != null && currentUser.getRole() == User.Role.ADMIN);
             return "register";
         }
         

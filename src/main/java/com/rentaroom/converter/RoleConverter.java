@@ -24,7 +24,9 @@ public class RoleConverter implements AttributeConverter<User.Role, String> {
             return User.Role.valueOf(dbData.toUpperCase());
         } catch (IllegalArgumentException e) {
             // Handle old lowercase values
-            if (dbData.equalsIgnoreCase("host")) {
+            if (dbData.equalsIgnoreCase("admin")) {
+                return User.Role.ADMIN;
+            } else if (dbData.equalsIgnoreCase("host")) {
                 return User.Role.HOST;
             } else if (dbData.equalsIgnoreCase("renter")) {
                 return User.Role.RENTER;

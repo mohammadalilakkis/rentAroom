@@ -77,6 +77,6 @@ public class User {
     public void setBookings(List<Booking> bookings) { this.bookings = bookings; }
     
     public enum Role {
-        RENTER, HOST
+        ADMIN, RENTER, HOST
     }
 }

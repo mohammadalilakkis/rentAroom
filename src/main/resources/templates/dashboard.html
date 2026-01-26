@@ -28,7 +28,10 @@
                 <div th:if="${user.role.name() == 'HOST'}">
                     <div class="dashboard-header">
                         <h2>My Room Listings</h2>
-                        <a th:href="@{/rooms/create}" class="btn-primary">+ Add New Room</a>
+                        <a th:href="@{/rooms/create}" class="btn-primary add-room-btn">
+                            <span class="btn-icon">+</span>
+                            <span>Add New Room</span>
+                        </a>
                     </div>
                     
                     <div class="rooms-grid" th:if="${rooms != null && !rooms.isEmpty()}">
