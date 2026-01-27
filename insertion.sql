@@ -15,7 +15,9 @@ INSERT INTO rooms (host_id, title, description, location, price, capacity, avail
 VALUES
 (1, 'Cozy Studio Downtown', 'A nice small apartment in the city center.', 'New York', 120.00, 2, '2025-10-01', '2025-12-31'),
 (3, 'Beachside Bungalow', 'Relaxing bungalow near the sea.', 'Los Angeles', 200.00, 4, '2025-09-15', '2025-12-31'),
-(1, 'Mountain Cabin Retreat', 'Peaceful cabin in the mountains.', 'Denver', 150.00, 5, '2025-11-01', '2026-02-01');
+(1, 'Mountain Cabin Retreat', 'Peaceful cabin in the mountains.', 'Denver', 150.00, 5, '2025-11-01', '2026-02-01'),
+(1, 'Modern Luxury Apartment', 'Spacious and beautifully furnished apartment with stunning city views. Perfect for long-term stays with all modern amenities including WiFi, fully equipped kitchen, and parking.', 'New York', 180.00, 3, CURDATE(), '2028-12-31'),
+(3, 'Coastal Villa with Ocean View', 'Stunning beachfront property with private access to the ocean. Features include 3 bedrooms, 2 bathrooms, full kitchen, and outdoor patio. Ideal for extended vacations or long-term rental.', 'Los Angeles', 350.00, 6, CURDATE(), '2029-12-31');
 
 -- Bookings
 INSERT INTO bookings (room_id, renter_id, check_in, check_out, total_price, status)

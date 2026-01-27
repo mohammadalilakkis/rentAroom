@@ -9,12 +9,18 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Optional;
 
 @Service
@@ -33,6 +39,24 @@ public class PaymentService {
     @Value("${stripe.secret.key}")
     private String stripeSecretKey;
     
+    @PostConstruct
+    public void init() {
+        // #region agent log
+        try {
+            String logPath = ".cursor/debug.log";
+            String trimmedKey = stripeSecretKey != null ? stripeSecretKey.trim() : "null";
+            String logEntry = String.format("{\"timestamp\":%d,\"location\":\"PaymentService.java:34\",\"message\":\"@Value injection check\",\"data\":{\"keyIsNull\":%s,\"keyLength\":%d,\"keyPrefix\":\"%s\",\"keySuffix\":\"%s\",\"hasWhitespace\":%s},\"sessionId\":\"debug-session\",\"runId\":\"run1\",\"hypothesisId\":\"A,B\"}\n",
+                System.currentTimeMillis(),
+                stripeSecretKey == null,
+                trimmedKey.length(),
+                trimmedKey.length() > 10 ? trimmedKey.substring(0, 10) : trimmedKey,
+                trimmedKey.length() > 10 ? trimmedKey.substring(Math.max(0, trimmedKey.length() - 10)) : trimmedKey,
+                stripeSecretKey != null && !stripeSecretKey.equals(stripeSecretKey.trim()));
+            Files.write(Paths.get(logPath), logEntry.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (Exception e) {}
+        // #endregion
+    }
+    
     @Value("${stripe.currency:usd}")
     private String currency;
     
@@ -40,8 +64,39 @@ public class PaymentService {
      * Initialize Stripe API key
      */
     private void initStripe() {
+        // #region agent log
+        try {
+            String logPath = ".cursor/debug.log";
+            String trimmedKey = stripeSecretKey != null ? stripeSecretKey.trim() : "null";
+            String logEntry = String.format("{\"timestamp\":%d,\"location\":\"PaymentService.java:42\",\"message\":\"initStripe called\",\"data\":{\"stripeSecretKeyLength\":%d,\"stripeSecretKeyPrefix\":\"%s\",\"stripeSecretKeySuffix\":\"%s\",\"currentApiKeyIsNull\":%s,\"currentApiKeyEmpty\":%s},\"sessionId\":\"debug-session\",\"runId\":\"run1\",\"hypothesisId\":\"A\"}\n",
+                System.currentTimeMillis(),
+                trimmedKey.length(),
+                trimmedKey.length() > 10 ? trimmedKey.substring(0, 10) : trimmedKey,
+                trimmedKey.length() > 10 ? trimmedKey.substring(Math.max(0, trimmedKey.length() - 10)) : trimmedKey,
+                Stripe.apiKey == null,
+                Stripe.apiKey != null && Stripe.apiKey.isEmpty());
+            Files.write(Paths.get(logPath), logEntry.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (Exception e) {}
+        // #endregion
+        
         if (Stripe.apiKey == null || Stripe.apiKey.isEmpty()) {
-            Stripe.apiKey = stripeSecretKey;
+            // Trim the key to remove any whitespace
+            String trimmedKey = stripeSecretKey != null ? stripeSecretKey.trim() : null;
+            
+            // #region agent log
+            try {
+                String logPath = ".cursor/debug.log";
+                String logEntry = String.format("{\"timestamp\":%d,\"location\":\"PaymentService.java:48\",\"message\":\"Setting Stripe API key\",\"data\":{\"keyLength\":%d,\"keyPrefix\":\"%s\",\"keySuffix\":\"%s\",\"keyStartsWithSk\":%s},\"sessionId\":\"debug-session\",\"runId\":\"run1\",\"hypothesisId\":\"B\"}\n",
+                    System.currentTimeMillis(),
+                    trimmedKey != null ? trimmedKey.length() : 0,
+                    trimmedKey != null && trimmedKey.length() > 10 ? trimmedKey.substring(0, 10) : (trimmedKey != null ? trimmedKey : "null"),
+                    trimmedKey != null && trimmedKey.length() > 10 ? trimmedKey.substring(Math.max(0, trimmedKey.length() - 10)) : (trimmedKey != null ? trimmedKey : "null"),
+                    trimmedKey != null && trimmedKey.startsWith("sk_"));
+                Files.write(Paths.get(logPath), logEntry.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            } catch (Exception e) {}
+            // #endregion
+            
+            Stripe.apiKey = trimmedKey;
         }
     }
     
@@ -49,7 +104,27 @@ public class PaymentService {
      * Create a Stripe Payment Intent for a booking
      */
     public PaymentResponse createPaymentIntent(Long bookingId) {
+        // #region agent log
+        try {
+            String logPath = ".cursor/debug.log";
+            String logEntry = String.format("{\"timestamp\":%d,\"location\":\"PaymentService.java:51\",\"message\":\"createPaymentIntent called\",\"data\":{\"bookingId\":%d},\"sessionId\":\"debug-session\",\"runId\":\"run1\",\"hypothesisId\":\"C\"}\n",
+                System.currentTimeMillis(), bookingId);
+            Files.write(Paths.get(logPath), logEntry.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (Exception e) {}
+        // #endregion
+        
         initStripe();
+        
+        // #region agent log
+        try {
+            String logPath = ".cursor/debug.log";
+            String logEntry = String.format("{\"timestamp\":%d,\"location\":\"PaymentService.java:54\",\"message\":\"After initStripe\",\"data\":{\"stripeApiKeySet\":%s,\"apiKeyLength\":%d},\"sessionId\":\"debug-session\",\"runId\":\"run1\",\"hypothesisId\":\"D\"}\n",
+                System.currentTimeMillis(),
+                Stripe.apiKey != null,
+                Stripe.apiKey != null ? Stripe.apiKey.length() : 0);
+            Files.write(Paths.get(logPath), logEntry.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (Exception e) {}
+        // #endregion
         
         Optional<Booking> bookingOpt = bookingRepository.findById(bookingId);
         if (bookingOpt.isEmpty()) {
@@ -70,6 +145,15 @@ public class PaymentService {
                 .multiply(BigDecimal.valueOf(100))
                 .longValue();
             
+            // #region agent log
+            try {
+                String logPath = ".cursor/debug.log";
+                String logEntry = String.format("{\"timestamp\":%d,\"location\":\"PaymentService.java:75\",\"message\":\"Before PaymentIntent.create\",\"data\":{\"amountInCents\":%d,\"currency\":\"%s\",\"bookingId\":%d},\"sessionId\":\"debug-session\",\"runId\":\"run1\",\"hypothesisId\":\"E\"}\n",
+                    System.currentTimeMillis(), amountInCents, currency, booking.getId());
+                Files.write(Paths.get(logPath), logEntry.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            } catch (Exception e) {}
+            // #endregion
+            
             // Create Payment Intent
             PaymentIntentCreateParams params = PaymentIntentCreateParams.builder()
                 .setAmount(amountInCents)
@@ -84,6 +168,15 @@ public class PaymentService {
                 .build();
             
             PaymentIntent paymentIntent = PaymentIntent.create(params);
+            
+            // #region agent log
+            try {
+                String logPath = ".cursor/debug.log";
+                String logEntry = String.format("{\"timestamp\":%d,\"location\":\"PaymentService.java:86\",\"message\":\"PaymentIntent created successfully\",\"data\":{\"paymentIntentId\":\"%s\"},\"sessionId\":\"debug-session\",\"runId\":\"run1\",\"hypothesisId\":\"E\"}\n",
+                    System.currentTimeMillis(), paymentIntent.getId());
+                Files.write(Paths.get(logPath), logEntry.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            } catch (Exception e) {}
+            // #endregion
             
             // Create or update payment record
             Payment payment;
@@ -113,6 +206,19 @@ public class PaymentService {
             return response;
             
         } catch (StripeException e) {
+            // #region agent log
+            try {
+                String logPath = ".cursor/debug.log";
+                String logEntry = String.format("{\"timestamp\":%d,\"location\":\"PaymentService.java:115\",\"message\":\"StripeException caught\",\"data\":{\"errorType\":\"%s\",\"errorMessage\":\"%s\",\"errorCode\":\"%s\",\"statusCode\":%d},\"sessionId\":\"debug-session\",\"runId\":\"run1\",\"hypothesisId\":\"A,B\"}\n",
+                    System.currentTimeMillis(),
+                    e.getClass().getSimpleName(),
+                    e.getMessage() != null ? e.getMessage().replace("\"", "'") : "null",
+                    e.getCode() != null ? e.getCode() : "null",
+                    e.getStatusCode() != null ? e.getStatusCode() : 0);
+                Files.write(Paths.get(logPath), logEntry.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            } catch (Exception logEx) {}
+            // #endregion
+            
             e.printStackTrace();
             return new PaymentResponse("Error creating payment intent: " + e.getMessage());
         }

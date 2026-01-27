@@ -6,7 +6,7 @@ CREATE TABLE users (
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     phone VARCHAR(20),
-    role ENUM('renter', 'host') DEFAULT 'renter',
+    role ENUM('admin', 'renter', 'host') DEFAULT 'renter',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE rooms (
@@ -39,7 +39,9 @@ CREATE TABLE payments (
     booking_id INT,
     amount DECIMAL(10,2),
     payment_method VARCHAR(50),
-    paid_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    stripe_payment_intent_id VARCHAR(255),
+    stripe_transaction_id VARCHAR(255),
+    paid_at TIMESTAMP NULL,
     status ENUM('pending', 'paid', 'failed') DEFAULT 'pending',
     FOREIGN KEY (booking_id) REFERENCES bookings(id)
 );
