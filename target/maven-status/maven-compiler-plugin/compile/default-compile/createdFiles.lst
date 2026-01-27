@@ -1,4 +1,8 @@
+com\rentaroom\converter\BookingStatusConverter.class
 com\rentaroom\model\User.class
+com\rentaroom\converter\RoleConverter.class
+com\rentaroom\dto\CreatePaymentIntentRequest.class
+com\rentaroom\service\PaymentService.class
 com\rentaroom\controller\BookingController.class
 com\rentaroom\controller\RoomController.class
 com\rentaroom\controller\DashboardController.class
@@ -13,9 +17,14 @@ com\rentaroom\repository\ReviewRepository.class
 com\rentaroom\model\Payment$PaymentStatus.class
 com\rentaroom\model\Review.class
 com\rentaroom\repository\UserRepository.class
+com\rentaroom\dto\PaymentRequest.class
 com\rentaroom\controller\HomeController.class
 com\rentaroom\service\BookingService.class
+com\rentaroom\repository\PaymentRepository.class
+com\rentaroom\converter\PaymentStatusConverter.class
 com\rentaroom\model\Booking$BookingStatus.class
+com\rentaroom\controller\PaymentController.class
 com\rentaroom\model\User$Role.class
+com\rentaroom\dto\PaymentResponse.class
 com\rentaroom\service\UserService.class
 com\rentaroom\repository\BookingRepository.class

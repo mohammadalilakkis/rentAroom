@@ -6,36 +6,58 @@
 }
 
 :root {
-    --primary-color: #6366f1;
-    --primary-hover: #4f46e5;
-    --primary-light: #818cf8;
-    --secondary-color: #64748b;
-    --secondary-hover: #475569;
-    --success-color: #10b981;
-    --danger-color: #ef4444;
-    --warning-color: #f59e0b;
-    --bg-color: #f1f5f9;
+    /* Soft, warm primary colors - teal/blue-green for comfort */
+    --primary-color: #2dd4bf;
+    --primary-hover: #14b8a6;
+    --primary-light: #5eead4;
+    --primary-dark: #0d9488;
+    
+    /* Warm secondary colors */
+    --secondary-color: #94a3b8;
+    --secondary-hover: #64748b;
+    
+    /* Softer status colors */
+    --success-color: #34d399;
+    --danger-color: #f87171;
+    --warning-color: #fbbf24;
+    
+    /* Warm, comfortable backgrounds */
+    --bg-color: #faf9f6;
     --card-bg: #ffffff;
-    --text-primary: #0f172a;
+    --card-bg-warm: #fefcf9;
+    
+    /* Softer text colors for better readability */
+    --text-primary: #1e293b;
     --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    
+    /* Gentle borders */
     --border-color: #e2e8f0;
-    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-    --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --border-light: #f1f5f9;
+    
+    /* Softer, more subtle shadows */
+    --shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+    
+    /* Warm, comfortable gradients */
+    --gradient-primary: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 50%, #0d9488 100%);
+    --gradient-hero: linear-gradient(135deg, #2dd4bf 0%, #06b6d4 50%, #3b82f6 100%);
+    --gradient-soft: linear-gradient(135deg, #f0fdfa 0%, #ecfeff 100%);
 }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--text-primary);
     background-color: var(--bg-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     animation: fadeIn 0.5s ease-in;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @keyframes fadeIn {
@@ -56,14 +78,15 @@ body {
 
 /* Navigation */
 .navbar {
-    background: var(--card-bg);
-    box-shadow: var(--shadow-md);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow);
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .navbar .container {
@@ -77,6 +100,31 @@ body {
     font-weight: 700;
     color: var(--primary-color);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.nav-brand a:hover {
+    transform: scale(1.05);
+}
+
+.logo-link {
+    display: inline-flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    max-width: 200px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(45, 212, 191, 0.15));
+}
+
+.logo-link:hover .logo-img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 8px rgba(45, 212, 191, 0.25));
 }
 
 .nav-menu {
@@ -147,6 +195,7 @@ body {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
     background: var(--primary-hover);
+    filter: brightness(1.05);
 }
 
 .btn-primary:active {
@@ -222,6 +271,7 @@ body {
     position: relative;
     overflow: hidden;
     animation: slideDown 0.8s ease-out;
+    box-shadow: inset 0 -20px 40px rgba(0, 0, 0, 0.05);
 }
 
 .hero::before {
@@ -287,9 +337,11 @@ body {
 /* Search Section */
 .search-section {
     padding: 2.5rem 0;
-    background: var(--card-bg);
-    box-shadow: var(--shadow-md);
+    background: var(--card-bg-warm);
+    box-shadow: var(--shadow);
     animation: fadeIn 0.8s ease-out;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
 }
 
 .search-form {
@@ -300,27 +352,77 @@ body {
 .search-input-group {
     display: flex;
     gap: 1rem;
+    align-items: stretch;
 }
 
-.search-input-group input {
+.search-input-wrapper {
+    position: relative;
     flex: 1;
-    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    width: 20px;
+    height: 20px;
+    color: var(--text-secondary);
+    pointer-events: none;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    padding: 1rem 1.25rem 1rem 3rem;
     border: 2px solid var(--border-color);
     border-radius: 0.75rem;
     font-size: 1rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     background: var(--card-bg);
+    font-family: inherit;
 }
 
-.search-input-group input:focus {
+.search-input-wrapper input:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.1);
     transform: translateY(-2px);
+    background: var(--card-bg);
 }
 
-.search-input-group input:hover {
+.search-input-wrapper input:focus + .input-icon,
+.search-input-wrapper:focus-within .input-icon {
+    color: var(--primary-color);
+}
+
+.search-input-wrapper input:hover {
     border-color: var(--primary-light);
+}
+
+.search-input-wrapper:hover .input-icon {
+    color: var(--primary-light);
+}
+
+.search-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    white-space: nowrap;
+    min-width: 140px;
+    justify-content: center;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.search-btn:hover .search-icon {
+    transform: rotate(15deg) scale(1.1);
 }
 
 /* Rooms Section */
@@ -343,7 +445,8 @@ body {
     background: var(--card-bg);
     border-radius: 1rem;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-light);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     animation: fadeInUp 0.6s ease-out both;
@@ -355,7 +458,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 3px;
     background: var(--gradient-primary);
     transform: scaleX(0);
     transform-origin: left;
@@ -367,8 +470,9 @@ body {
 }
 
 .room-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
 }
 
 .room-card:nth-child(1) { animation-delay: 0.1s; }
@@ -463,7 +567,7 @@ body {
 .room-price {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--primary-dark);
 }
 
 /* Forms */
@@ -474,18 +578,19 @@ body {
 .auth-card, .form-card {
     max-width: 500px;
     margin: 0 auto;
-    background: var(--card-bg);
+    background: var(--card-bg-warm);
     padding: 2.5rem;
     border-radius: 1.25rem;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
     animation: slideUp 0.6s ease-out;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-light);
     transition: all 0.3s ease;
 }
 
 .auth-card:hover, .form-card:hover {
-    box-shadow: var(--shadow-xl);
-    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    border-color: var(--primary-light);
 }
 
 @keyframes slideUp {
@@ -533,8 +638,9 @@ body {
 .form-group select:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-    transform: translateY(-2px);
+    box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.1);
+    transform: translateY(-1px);
+    background: var(--card-bg);
 }
 
 .form-group input:hover,
@@ -600,15 +706,17 @@ body {
 }
 
 .alert-error {
-    background: #fee2e2;
+    background: #fef2f2;
     color: #991b1b;
-    border: 1px solid #fca5a5;
+    border: 1px solid #fecaca;
+    border-left: 4px solid var(--danger-color);
 }
 
 .alert-success {
-    background: #d1fae5;
+    background: #f0fdf4;
     color: #065f46;
-    border: 1px solid #6ee7b7;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid var(--success-color);
 }
 
 /* Room Detail */
@@ -677,7 +785,7 @@ body {
 .price-amount {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--primary-dark);
 }
 
 .price-period {
@@ -770,18 +878,21 @@ body {
 }
 
 .status-pending {
-    background: #fef3c7;
-    color: #92400e;
+    background: #fef9c3;
+    color: #854d0e;
+    border: 1px solid #fde047;
 }
 
 .status-confirmed {
-    background: #d1fae5;
-    color: #065f46;
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #86efac;
 }
 
 .status-cancelled {
-    background: #fee2e2;
+    background: #fef2f2;
     color: #991b1b;
+    border: 1px solid #fecaca;
 }
 
 /* Empty State */
@@ -851,7 +962,12 @@ html {
 
 /* Selection Color */
 ::selection {
-    background: var(--primary-light);
+    background: var(--primary-color);
+    color: white;
+}
+
+::-moz-selection {
+    background: var(--primary-color);
     color: white;
 }
 
@@ -872,6 +988,21 @@ html {
     
     .search-input-group {
         flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .search-input-wrapper {
+        width: 100%;
+    }
+    
+    .search-btn {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .logo-img {
+        height: 32px;
+        max-width: 160px;
     }
     
     .rooms-grid {
