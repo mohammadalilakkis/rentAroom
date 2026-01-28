@@ -48,7 +48,7 @@
                             <label for="role">Account Type:</label>
                             <select id="role" th:field="*{role}" class="role-select">
                                 <option value="RENTER">Customer - Rent a room/bed</option>
-                                <option value="HOST">Renter - List my room/bed</option>
+                                <option value="HOST">Host - List my room/hotel/house</option>
                                 <option value="ADMIN" th:if="${isEditor}">Admin - Manage platform</option>
                             </select>
                             <small th:if="${!isEditor}">Admin registration is only available to existing administrators.</small>

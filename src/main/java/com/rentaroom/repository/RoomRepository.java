@@ -22,4 +22,13 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
            "AND (r.availableFrom IS NULL OR r.availableFrom <= :date) " +
            "AND (r.availableTo IS NULL OR r.availableTo >= :date)")
     List<Room> findByMaxPrice(@Param("maxPrice") java.math.BigDecimal maxPrice, @Param("date") LocalDate date);
+    
+    // Analytics queries
+    @Query("SELECT AVG(r.price) FROM Room r")
+    java.math.BigDecimal getAveragePrice();
+    
+    @Query("SELECT r.location, COUNT(r) FROM Room r GROUP BY r.location ORDER BY COUNT(r) DESC")
+    List<Object[]> countRoomsByLocation();
+    
+    List<Room> findAll();
 }

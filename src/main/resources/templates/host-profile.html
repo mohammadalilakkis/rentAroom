@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host Profile - Rent A Room</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="~{layout :: navbar}"></div>
+    
+    <main class="main-content">
+        <div th:if="${error}" class="alert alert-error">
+            <span th:text="${error}"></span>
+        </div>
+        <div th:if="${message}" class="alert alert-success">
+            <span th:text="${message}"></span>
+        </div>
+        
+        <section class="form-section">
+            <div class="container">
+                <div class="form-card">
+                    <h2>Host Business Profile</h2>
+                    <p class="form-description">Add your business information to help customers learn more about your property.</p>
+                    <form th:action="@{/host/profile}" th:object="${hostProfile}" method="post">
+                        <div class="form-group">
+                            <label for="businessName">Business Name</label>
+                            <input type="text" id="businessName" th:field="*{businessName}" placeholder="e.g., Sunny Hotel, Downtown Apartments">
+                            <small>Your business or property name</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="businessType">Business Type</label>
+                            <select id="businessType" th:field="*{businessType}" class="role-select">
+                                <option value="">Select type...</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="house">House</option>
+                                <option value="hostel">Hostel</option>
+                                <option value="dormitory">Dormitory</option>
+                                <option value="bed_and_breakfast">Bed & Breakfast</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Street Address</label>
+                            <input type="text" id="address" th:field="*{address}" placeholder="123 Main Street">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" th:field="*{city}" placeholder="New York">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="state">State/Province</label>
+                                <input type="text" id="state" th:field="*{state}" placeholder="NY">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="zipCode">Zip Code</label>
+                                <input type="text" id="zipCode" th:field="*{zipCode}" placeholder="10001">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Business Description</label>
+                            <textarea id="description" th:field="*{description}" rows="5" placeholder="Tell customers about your property, amenities, and what makes it special..."></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="website">Website (Optional)</label>
+                                <input type="url" id="website" th:field="*{website}" placeholder="https://example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="businessPhone">Business Phone (Optional)</label>
+                                <input type="tel" id="businessPhone" th:field="*{businessPhone}" placeholder="+1 (555) 123-4567">
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary btn-full">Save Profile</button>
+                            <a th:href="@{/dashboard}" class="btn-secondary btn-full">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div th:replace="~{layout :: footer}"></div>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

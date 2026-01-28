@@ -26,6 +26,18 @@
                 <p>Welcome, <span th:text="${user.name}">User</span>!</p>
                 
                 <div th:if="${user.role.name() == 'HOST'}">
+                    <div class="dashboard-section-divider">
+                        <h2>Business Profile</h2>
+                        <div th:if="${hasProfile}" class="profile-status">
+                            <p class="alert alert-success">✓ Your business profile is set up</p>
+                            <a th:href="@{/host/profile}" class="btn-secondary">Edit Profile</a>
+                        </div>
+                        <div th:if="${!hasProfile}" class="profile-status">
+                            <p>Complete your business profile to help customers learn more about your property.</p>
+                            <a th:href="@{/host/profile}" class="btn-primary">Set Up Profile</a>
+                        </div>
+                    </div>
+                    
                     <div class="dashboard-header">
                         <h2>My Room Listings</h2>
                         <a th:href="@{/rooms/create}" class="btn-primary add-room-btn">

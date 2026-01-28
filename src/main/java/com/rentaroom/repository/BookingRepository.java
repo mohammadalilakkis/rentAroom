@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -23,4 +24,21 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> findConflictingBookings(@Param("room") Room room, 
                                           @Param("checkIn") LocalDate checkIn, 
                                           @Param("checkOut") LocalDate checkOut);
+    
+    // Analytics queries
+    long countByStatus(Booking.BookingStatus status);
+    
+    @Query("SELECT COUNT(b) FROM Booking b WHERE b.createdAt >= :startDate")
+    long countByCreatedAtAfter(@Param("startDate") LocalDateTime startDate);
+    
+    @Query("SELECT COUNT(b) FROM Booking b WHERE b.status = :status AND b.createdAt >= :startDate")
+    long countByStatusAndCreatedAtAfter(@Param("status") Booking.BookingStatus status, @Param("startDate") LocalDateTime startDate);
+    
+    @Query("SELECT SUM(b.totalPrice) FROM Booking b WHERE b.status = 'CONFIRMED'")
+    java.math.BigDecimal sumTotalPriceByConfirmedStatus();
+    
+    @Query("SELECT SUM(b.totalPrice) FROM Booking b WHERE b.status = 'CONFIRMED' AND b.createdAt >= :startDate")
+    java.math.BigDecimal sumTotalPriceByConfirmedStatusAndCreatedAtAfter(@Param("startDate") LocalDateTime startDate);
+    
+    List<Booking> findAll();
 }

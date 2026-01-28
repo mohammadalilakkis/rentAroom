@@ -22,6 +22,7 @@
                 <li th:if="${user == null}"><a th:href="@{/login}">Login</a></li>
                 <li th:if="${user == null}"><a th:href="@{/register}" class="btn-primary">Sign Up</a></li>
                 <li th:if="${user != null && user.role.name() == 'HOST'}"><a th:href="@{/rooms/create}">List Room</a></li>
+                <li th:if="${user != null && user.role.name() == 'ADMIN'}"><a th:href="@{/admin/dashboard}">Admin</a></li>
                 <li th:if="${user != null}"><a th:href="@{/dashboard}">Dashboard</a></li>
                 <li th:if="${user != null}"><a th:href="@{/bookings/my-bookings}">My Bookings</a></li>
                 <li th:if="${user != null}">

@@ -43,6 +43,9 @@ public class User {
     @OneToMany(mappedBy = "renter", cascade = CascadeType.ALL)
     private List<Booking> bookings;
     
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private com.rentaroom.model.HostProfile hostProfile;
+    
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
@@ -75,6 +78,9 @@ public class User {
     
     public List<Booking> getBookings() { return bookings; }
     public void setBookings(List<Booking> bookings) { this.bookings = bookings; }
+    
+    public com.rentaroom.model.HostProfile getHostProfile() { return hostProfile; }
+    public void setHostProfile(com.rentaroom.model.HostProfile hostProfile) { this.hostProfile = hostProfile; }
     
     public enum Role {
         ADMIN, RENTER, HOST
