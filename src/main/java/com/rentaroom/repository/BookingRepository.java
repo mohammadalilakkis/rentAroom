@@ -3,42 +3,32 @@ package com.rentaroom.repository;
 import com.rentaroom.model.Booking;
 import com.rentaroom.model.Room;
 import com.rentaroom.model.User;
+import com.rentaroom.repository.specification.BookingSpecifications;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface BookingRepository extends JpaRepository<Booking, Long> {
+public interface BookingRepository extends JpaRepository<Booking, Long>, JpaSpecificationExecutor<Booking>, BookingRepositoryCustom {
     List<Booking> findByRenter(User renter);
     List<Booking> findByRoom(Room room);
-    
-    @Query("SELECT b FROM Booking b WHERE b.room = :room " +
-           "AND b.status != 'CANCELLED' " +
-           "AND ((b.checkIn <= :checkIn AND b.checkOut > :checkIn) OR " +
-           "(b.checkIn < :checkOut AND b.checkOut >= :checkOut) OR " +
-           "(b.checkIn >= :checkIn AND b.checkOut <= :checkOut))")
-    List<Booking> findConflictingBookings(@Param("room") Room room, 
-                                          @Param("checkIn") LocalDate checkIn, 
-                                          @Param("checkOut") LocalDate checkOut);
-    
-    // Analytics queries
+
+    default List<Booking> findConflictingBookings(Room room, LocalDate checkIn, LocalDate checkOut) {
+        return findAll(BookingSpecifications.findConflictingBookings(room, checkIn, checkOut));
+    }
+
     long countByStatus(Booking.BookingStatus status);
-    
-    @Query("SELECT COUNT(b) FROM Booking b WHERE b.createdAt >= :startDate")
-    long countByCreatedAtAfter(@Param("startDate") LocalDateTime startDate);
-    
-    @Query("SELECT COUNT(b) FROM Booking b WHERE b.status = :status AND b.createdAt >= :startDate")
-    long countByStatusAndCreatedAtAfter(@Param("status") Booking.BookingStatus status, @Param("startDate") LocalDateTime startDate);
-    
-    @Query("SELECT SUM(b.totalPrice) FROM Booking b WHERE b.status = 'CONFIRMED'")
-    java.math.BigDecimal sumTotalPriceByConfirmedStatus();
-    
-    @Query("SELECT SUM(b.totalPrice) FROM Booking b WHERE b.status = 'CONFIRMED' AND b.createdAt >= :startDate")
-    java.math.BigDecimal sumTotalPriceByConfirmedStatusAndCreatedAtAfter(@Param("startDate") LocalDateTime startDate);
-    
+
+    default long countByCreatedAtAfter(LocalDateTime startDate) {
+        return count(BookingSpecifications.countByCreatedAtAfter(startDate));
+    }
+
+    default long countByStatusAndCreatedAtAfter(Booking.BookingStatus status, LocalDateTime startDate) {
+        return count(BookingSpecifications.countByStatusAndCreatedAtAfter(status, startDate));
+    }
+
     List<Booking> findAll();
 }
