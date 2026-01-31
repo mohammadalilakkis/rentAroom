@@ -38,3 +38,24 @@ CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);
 -- Index on payments for revenue analytics
 CREATE INDEX IF NOT EXISTS idx_payments_status ON payments(status);
 CREATE INDEX IF NOT EXISTS idx_payments_paid_at ON payments(paid_at);
+
+
+-- SQL script to create the first admin user
+USE rent_a_room;
+
+-- Insert admin user
+-- Change the email and password as needed
+INSERT INTO users (name, email, password, phone, role, created_at)
+VALUES (
+    'Admin User',
+    'admin@rentaroom.com',
+    'admin123',  -- CHANGE THIS PASSWORD after first login!
+    '555-0000',
+    'admin',
+    NOW()
+);
+
+-- Verify the admin was created
+SELECT id, name, email, role, created_at 
+FROM users 
+WHERE role = 'admin';
