@@ -100,6 +100,7 @@ public class AdminService {
         // Recent registrations (last 10)
         List<User> allUsers = userRepository.findAll();
         List<User> recentUsers = allUsers.stream()
+            .filter(u -> u.getCreatedAt() != null)
             .sorted((u1, u2) -> u2.getCreatedAt().compareTo(u1.getCreatedAt()))
             .limit(10)
             .collect(Collectors.toList());
@@ -124,6 +125,13 @@ public class AdminService {
         List<Object[]> locationCounts = roomRepository.countRoomsByLocation();
         Map<String, Long> roomsByLocation = new LinkedHashMap<>();
         for (Object[] row : locationCounts) {
+            // #region agent log
+            try {
+                java.io.FileWriter fw = new java.io.FileWriter(java.nio.file.Paths.get(System.getProperty("user.dir"), ".cursor", "debug.log").toString(), true);
+                fw.write("{\"location\":\"AdminService.java:row\",\"message\":\"countRoomsByLocation row\",\"data\":{\"row1Class\":\"" + (row[1] != null ? row[1].getClass().getName() : "null") + "\"},\"timestamp\":" + System.currentTimeMillis() + ",\"hypothesisId\":\"C\"}\n");
+                fw.close();
+            } catch (Exception e) {}
+            // #endregion
             String location = (String) row[0];
             Long count = (Long) row[1];
             roomsByLocation.put(location != null ? location : "Unknown", count);
@@ -197,6 +205,7 @@ public class AdminService {
         List<Booking> allBookings = bookingRepository.findAll();
         Map<User, Long> hostBookingCounts = allBookings.stream()
             .filter(b -> b.getStatus() == Booking.BookingStatus.CONFIRMED)
+            .filter(b -> b.getRoom() != null && b.getRoom().getHost() != null)
             .collect(Collectors.groupingBy(
                 b -> b.getRoom().getHost(),
                 Collectors.counting()
@@ -218,6 +227,7 @@ public class AdminService {
         // Top hosts by revenue
         Map<User, BigDecimal> hostRevenue = allBookings.stream()
             .filter(b -> b.getStatus() == Booking.BookingStatus.CONFIRMED)
+            .filter(b -> b.getRoom() != null && b.getRoom().getHost() != null)
             .collect(Collectors.groupingBy(
                 b -> b.getRoom().getHost(),
                 Collectors.reducing(BigDecimal.ZERO, Booking::getTotalPrice, BigDecimal::add)

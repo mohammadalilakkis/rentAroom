@@ -31,6 +31,13 @@ public class DashboardController {
     
     @GetMapping("/dashboard")
     public String dashboard(Model model, HttpSession session) {
+        // #region agent log
+        try {
+            java.io.FileWriter fw = new java.io.FileWriter(java.nio.file.Paths.get(System.getProperty("user.dir"), ".cursor", "debug.log").toString(), true);
+            fw.write("{\"location\":\"DashboardController.java:34\",\"message\":\"dashboard entry\",\"data\":{},\"timestamp\":" + System.currentTimeMillis() + ",\"hypothesisId\":\"D\"}\n");
+            fw.close();
+        } catch (Exception e) {}
+        // #endregion
         User user = (User) session.getAttribute("user");
         if (user == null) {
             return "redirect:/login";
