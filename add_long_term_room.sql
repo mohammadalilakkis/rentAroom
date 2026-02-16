@@ -13,8 +13,8 @@ INSERT INTO rooms (host_id, title, description, location, price, capacity, avail
 VALUES
 (
     1,  -- Change this to your actual host user ID
-    'Premium Long-Term Rental Suite',
-    'Beautifully designed suite perfect for extended stays. Features include:
+    'Premium Long-Term Rental Suite, Sin el Fil',
+    'Beautifully designed suite perfect for extended stays in Beirut. Features include:
     - Fully furnished with modern amenities
     - High-speed WiFi and smart TV
     - Fully equipped kitchen with appliances
@@ -22,11 +22,11 @@ VALUES
     - Comfortable workspace area
     - Laundry facilities available
     - Secure building with 24/7 access
-    - Close to public transportation and shopping centers
+    - Close to Dora, Jdeideh, and main roads
     
-    Ideal for professionals, students, or anyone seeking a comfortable long-term accommodation solution.',
-    'New York',
-    175.00,
+    Ideal for professionals, students, or anyone seeking comfortable long-term accommodation in Lebanon.',
+    'Beirut',
+    110.00,
     2,
     CURDATE(),  -- Available from today
     '2028-12-31',  -- Available until end of 2028 (long-term validity)
@@ -44,4 +44,4 @@ SELECT
     available_to,
     DATEDIFF(available_to, available_from) AS days_available
 FROM rooms
-WHERE title = 'Premium Long-Term Rental Suite';
+WHERE title = 'Premium Long-Term Rental Suite, Sin el Fil';

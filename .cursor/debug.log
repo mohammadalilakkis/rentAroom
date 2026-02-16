@@ -1,0 +1,241 @@
+{"timestamp":1770985762321,"location":"PaymentService.java:34","message":"@Value injection check","data":{"keyIsNull":false,"keyLength":107,"keyPrefix":"sk_test_51","keySuffix":"005ika8lJB","hasWhitespace":false},"sessionId":"debug-session","runId":"run1","hypothesisId":"A,B"}
+{"timestamp":1770985877780,"location":"PaymentService.java:34","message":"@Value injection check","data":{"keyIsNull":false,"keyLength":107,"keyPrefix":"sk_test_51","keySuffix":"005ika8lJB","hasWhitespace":false},"sessionId":"debug-session","runId":"run1","hypothesisId":"A,B"}
+{"timestamp":1770986292145,"location":"PaymentService.java:34","message":"@Value injection check","data":{"keyIsNull":false,"keyLength":107,"keyPrefix":"sk_test_51","keySuffix":"005ika8lJB","hasWhitespace":false},"sessionId":"debug-session","runId":"run1","hypothesisId":"A,B"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1770986414862}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1770986414933,"hypothesisId":"A"}
+{"location":"GlobalExceptionLogger","message":"500 exception","data":{"requestUri":"/.well-known/appspecific/com.chrome.devtools.json","type":"org.springframework.web.servlet.resource.NoResourceFoundException","message":"No static resource .well-known/appspecific/com.chrome.devtools.json.","causeType":"null","causeMessage":"null"},"timestamp":1770986416066,"hypothesisId":"global"}
+{"location":"GlobalExceptionLogger","message":"500 exception","data":{"requestUri":"/.well-known/appspecific/com.chrome.devtools.json","type":"org.springframework.web.servlet.resource.NoResourceFoundException","message":"No static resource .well-known/appspecific/com.chrome.devtools.json.","causeType":"null","causeMessage":"null"},"timestamp":1770986419192,"hypothesisId":"global"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/dashboard"},"timestamp":1770986422077}
+{"location":"DashboardController.java:34","message":"dashboard entry","data":{},"timestamp":1770986422082,"hypothesisId":"D"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1770986422097}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1770986422103,"hypothesisId":"A"}
+{"location":"AdminController.java:52","message":"before getOverviewStats","data":{},"timestamp":1770986422106,"hypothesisId":"A"}
+{"location":"AdminController.java:58","message":"after getOverviewStats","data":{},"timestamp":1770986422594,"hypothesisId":"A"}
+{"location":"AdminController.java:64","message":"after getUserAnalytics","data":{},"timestamp":1770986422701,"hypothesisId":"A"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986422740,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986422741,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986422743,"hypothesisId":"C"}
+{"location":"AdminController.java:70","message":"after getRoomAnalytics","data":{},"timestamp":1770986422752,"hypothesisId":"A"}
+{"location":"AdminController.java:76","message":"after getBookingAnalytics","data":{},"timestamp":1770986422821,"hypothesisId":"A"}
+{"location":"AdminController.java:82","message":"after getTopPerformers","data":{},"timestamp":1770986422871,"hypothesisId":"A"}
+{"location":"AdminController.java:88","message":"after getFinancialAnalytics, before return","data":{},"timestamp":1770986422978,"hypothesisId":"A,B"}
+{"location":"GlobalExceptionLogger","message":"500 exception","data":{"requestUri":"/.well-known/appspecific/com.chrome.devtools.json","type":"org.springframework.web.servlet.resource.NoResourceFoundException","message":"No static resource .well-known/appspecific/com.chrome.devtools.json.","causeType":"null","causeMessage":"null"},"timestamp":1770986423123,"hypothesisId":"global"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1770986426738}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1770986426745,"hypothesisId":"A"}
+{"location":"AdminController.java:52","message":"before getOverviewStats","data":{},"timestamp":1770986426748,"hypothesisId":"A"}
+{"location":"AdminController.java:58","message":"after getOverviewStats","data":{},"timestamp":1770986426811,"hypothesisId":"A"}
+{"location":"AdminController.java:64","message":"after getUserAnalytics","data":{},"timestamp":1770986426862,"hypothesisId":"A"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986426879,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986426881,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986426883,"hypothesisId":"C"}
+{"location":"AdminController.java:70","message":"after getRoomAnalytics","data":{},"timestamp":1770986426887,"hypothesisId":"A"}
+{"location":"AdminController.java:76","message":"after getBookingAnalytics","data":{},"timestamp":1770986426930,"hypothesisId":"A"}
+{"location":"AdminController.java:82","message":"after getTopPerformers","data":{},"timestamp":1770986426950,"hypothesisId":"A"}
+{"location":"AdminController.java:88","message":"after getFinancialAnalytics, before return","data":{},"timestamp":1770986426995,"hypothesisId":"A,B"}
+{"location":"GlobalExceptionLogger","message":"500 exception","data":{"requestUri":"/.well-known/appspecific/com.chrome.devtools.json","type":"org.springframework.web.servlet.resource.NoResourceFoundException","message":"No static resource .well-known/appspecific/com.chrome.devtools.json.","causeType":"null","causeMessage":"null"},"timestamp":1770986427061,"hypothesisId":"global"}
+{"timestamp":1770986509697,"location":"PaymentService.java:51","message":"createPaymentIntent called","data":{"bookingId":3},"sessionId":"debug-session","runId":"run1","hypothesisId":"C"}
+{"timestamp":1770986509699,"location":"PaymentService.java:42","message":"initStripe called","data":{"stripeSecretKeyLength":107,"stripeSecretKeyPrefix":"sk_test_51","stripeSecretKeySuffix":"005ika8lJB","currentApiKeyIsNull":true,"currentApiKeyEmpty":false},"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}
+{"timestamp":1770986509702,"location":"PaymentService.java:48","message":"Setting Stripe API key","data":{"keyLength":107,"keyPrefix":"sk_test_51","keySuffix":"005ika8lJB","keyStartsWithSk":true},"sessionId":"debug-session","runId":"run1","hypothesisId":"B"}
+{"timestamp":1770986509704,"location":"PaymentService.java:54","message":"After initStripe","data":{"stripeApiKeySet":true,"apiKeyLength":107},"sessionId":"debug-session","runId":"run1","hypothesisId":"D"}
+{"timestamp":1770986509717,"location":"PaymentService.java:75","message":"Before PaymentIntent.create","data":{"amountInCents":18000,"currency":"usd","bookingId":3},"sessionId":"debug-session","runId":"run1","hypothesisId":"E"}
+{"timestamp":1770986511535,"location":"PaymentService.java:86","message":"PaymentIntent created successfully","data":{"paymentIntentId":"pi_3T0LgxAw0stATI6Q0NQVF1xi"},"sessionId":"debug-session","runId":"run1","hypothesisId":"E"}
+{"location":"booking-detail.html:237","message":"create-intent response received","data":{"status":200,"ok":true,"hasMessage":false,"message":null},"timestamp":1770986511583,"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}
+{"timestamp":1770986512909,"location":"PaymentService.java:42","message":"initStripe called","data":{"stripeSecretKeyLength":107,"stripeSecretKeyPrefix":"sk_test_51","stripeSecretKeySuffix":"005ika8lJB","currentApiKeyIsNull":false,"currentApiKeyEmpty":false},"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}
+{"location":"booking-detail.html:332","message":"Before showing success","data":{"formContainerExists":true,"successElementExists":false,"paymentSuccessExists":false},"timestamp":1770986513686,"sessionId":"debug-session","runId":"run1","hypothesisId":"F"}
+{"timestamp":1770986826761,"location":"PaymentService.java:34","message":"@Value injection check","data":{"keyIsNull":false,"keyLength":107,"keyPrefix":"sk_test_51","keySuffix":"005ika8lJB","hasWhitespace":false},"sessionId":"debug-session","runId":"run1","hypothesisId":"A,B"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1770986837475}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1770986837485,"hypothesisId":"A"}
+{"location":"AdminController.java:52","message":"before getOverviewStats","data":{},"timestamp":1770986837492,"hypothesisId":"A"}
+{"location":"AdminController.java:58","message":"after getOverviewStats","data":{},"timestamp":1770986839445,"hypothesisId":"A"}
+{"location":"AdminController.java:64","message":"after getUserAnalytics","data":{},"timestamp":1770986839625,"hypothesisId":"A"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986839712,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986839714,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986839718,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986839741,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986839751,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986839753,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986839763,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986839771,"hypothesisId":"C"}
+{"location":"AdminController.java:70","message":"after getRoomAnalytics","data":{},"timestamp":1770986839780,"hypothesisId":"A"}
+{"location":"AdminController.java:76","message":"after getBookingAnalytics","data":{},"timestamp":1770986839888,"hypothesisId":"A"}
+{"location":"AdminController.java:82","message":"after getTopPerformers","data":{},"timestamp":1770986839957,"hypothesisId":"A"}
+{"location":"AdminController.java:88","message":"after getFinancialAnalytics, before return","data":{},"timestamp":1770986840094,"hypothesisId":"A,B"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/dashboard"},"timestamp":1770986857846}
+{"location":"DashboardController.java:34","message":"dashboard entry","data":{},"timestamp":1770986857851,"hypothesisId":"D"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1770986857869}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1770986857873,"hypothesisId":"A"}
+{"location":"AdminController.java:52","message":"before getOverviewStats","data":{},"timestamp":1770986857882,"hypothesisId":"A"}
+{"location":"AdminController.java:58","message":"after getOverviewStats","data":{},"timestamp":1770986857968,"hypothesisId":"A"}
+{"location":"AdminController.java:64","message":"after getUserAnalytics","data":{},"timestamp":1770986858045,"hypothesisId":"A"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986858071,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986858077,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986858081,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986858084,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986858087,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986858090,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986858097,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986858100,"hypothesisId":"C"}
+{"location":"AdminController.java:70","message":"after getRoomAnalytics","data":{},"timestamp":1770986858104,"hypothesisId":"A"}
+{"location":"AdminController.java:76","message":"after getBookingAnalytics","data":{},"timestamp":1770986858165,"hypothesisId":"A"}
+{"location":"AdminController.java:82","message":"after getTopPerformers","data":{},"timestamp":1770986858205,"hypothesisId":"A"}
+{"location":"AdminController.java:88","message":"after getFinancialAnalytics, before return","data":{},"timestamp":1770986858298,"hypothesisId":"A,B"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/dashboard"},"timestamp":1770986890108}
+{"location":"DashboardController.java:34","message":"dashboard entry","data":{},"timestamp":1770986890114,"hypothesisId":"D"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1770986890137}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1770986890141,"hypothesisId":"A"}
+{"location":"AdminController.java:52","message":"before getOverviewStats","data":{},"timestamp":1770986890143,"hypothesisId":"A"}
+{"location":"AdminController.java:58","message":"after getOverviewStats","data":{},"timestamp":1770986890218,"hypothesisId":"A"}
+{"location":"AdminController.java:64","message":"after getUserAnalytics","data":{},"timestamp":1770986890253,"hypothesisId":"A"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986890267,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986890269,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986890272,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986890276,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986890278,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986890281,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986890283,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986890286,"hypothesisId":"C"}
+{"location":"AdminController.java:70","message":"after getRoomAnalytics","data":{},"timestamp":1770986890289,"hypothesisId":"A"}
+{"location":"AdminController.java:76","message":"after getBookingAnalytics","data":{},"timestamp":1770986890318,"hypothesisId":"A"}
+{"location":"AdminController.java:82","message":"after getTopPerformers","data":{},"timestamp":1770986890332,"hypothesisId":"A"}
+{"location":"AdminController.java:88","message":"after getFinancialAnalytics, before return","data":{},"timestamp":1770986890359,"hypothesisId":"A,B"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1770986892754}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1770986892760,"hypothesisId":"A"}
+{"location":"AdminController.java:52","message":"before getOverviewStats","data":{},"timestamp":1770986892764,"hypothesisId":"A"}
+{"location":"AdminController.java:58","message":"after getOverviewStats","data":{},"timestamp":1770986892831,"hypothesisId":"A"}
+{"location":"AdminController.java:64","message":"after getUserAnalytics","data":{},"timestamp":1770986892892,"hypothesisId":"A"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986892905,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986892911,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986892913,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986892917,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986892920,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986892930,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986892931,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986892934,"hypothesisId":"C"}
+{"location":"AdminController.java:70","message":"after getRoomAnalytics","data":{},"timestamp":1770986892938,"hypothesisId":"A"}
+{"location":"AdminController.java:76","message":"after getBookingAnalytics","data":{},"timestamp":1770986892983,"hypothesisId":"A"}
+{"location":"AdminController.java:82","message":"after getTopPerformers","data":{},"timestamp":1770986893005,"hypothesisId":"A"}
+{"location":"AdminController.java:88","message":"after getFinancialAnalytics, before return","data":{},"timestamp":1770986893058,"hypothesisId":"A,B"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/dashboard"},"timestamp":1770986900550}
+{"location":"DashboardController.java:34","message":"dashboard entry","data":{},"timestamp":1770986900554,"hypothesisId":"D"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1770986900567}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1770986900570,"hypothesisId":"A"}
+{"location":"AdminController.java:52","message":"before getOverviewStats","data":{},"timestamp":1770986900571,"hypothesisId":"A"}
+{"location":"AdminController.java:58","message":"after getOverviewStats","data":{},"timestamp":1770986900621,"hypothesisId":"A"}
+{"location":"AdminController.java:64","message":"after getUserAnalytics","data":{},"timestamp":1770986900647,"hypothesisId":"A"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986900657,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986900659,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986900661,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986900664,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986900666,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986900668,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986900671,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986900673,"hypothesisId":"C"}
+{"location":"AdminController.java:70","message":"after getRoomAnalytics","data":{},"timestamp":1770986900675,"hypothesisId":"A"}
+{"location":"AdminController.java:76","message":"after getBookingAnalytics","data":{},"timestamp":1770986900699,"hypothesisId":"A"}
+{"location":"AdminController.java:82","message":"after getTopPerformers","data":{},"timestamp":1770986900710,"hypothesisId":"A"}
+{"location":"AdminController.java:88","message":"after getFinancialAnalytics, before return","data":{},"timestamp":1770986900740,"hypothesisId":"A,B"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1770986902296}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1770986902303,"hypothesisId":"A"}
+{"location":"AdminController.java:52","message":"before getOverviewStats","data":{},"timestamp":1770986902307,"hypothesisId":"A"}
+{"location":"AdminController.java:58","message":"after getOverviewStats","data":{},"timestamp":1770986902352,"hypothesisId":"A"}
+{"location":"AdminController.java:64","message":"after getUserAnalytics","data":{},"timestamp":1770986902375,"hypothesisId":"A"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986902386,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986902388,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986902391,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986902393,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986902397,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986902399,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986902400,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986902402,"hypothesisId":"C"}
+{"location":"AdminController.java:70","message":"after getRoomAnalytics","data":{},"timestamp":1770986902407,"hypothesisId":"A"}
+{"location":"AdminController.java:76","message":"after getBookingAnalytics","data":{},"timestamp":1770986902438,"hypothesisId":"A"}
+{"location":"AdminController.java:82","message":"after getTopPerformers","data":{},"timestamp":1770986902453,"hypothesisId":"A"}
+{"location":"AdminController.java:88","message":"after getFinancialAnalytics, before return","data":{},"timestamp":1770986902483,"hypothesisId":"A,B"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/users"},"timestamp":1770986903626}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/rooms"},"timestamp":1770986911360}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/bookings"},"timestamp":1770986914866}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/bookings/confirm/5"},"timestamp":1770986919126}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/bookings"},"timestamp":1770986919477}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/payments"},"timestamp":1770986922511}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1770986926330}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1770986926333,"hypothesisId":"A"}
+{"location":"AdminController.java:52","message":"before getOverviewStats","data":{},"timestamp":1770986926336,"hypothesisId":"A"}
+{"location":"AdminController.java:58","message":"after getOverviewStats","data":{},"timestamp":1770986926388,"hypothesisId":"A"}
+{"location":"AdminController.java:64","message":"after getUserAnalytics","data":{},"timestamp":1770986926414,"hypothesisId":"A"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986926423,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986926429,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986926431,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986926434,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986926436,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986926438,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986926439,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1770986926441,"hypothesisId":"C"}
+{"location":"AdminController.java:70","message":"after getRoomAnalytics","data":{},"timestamp":1770986926446,"hypothesisId":"A"}
+{"location":"AdminController.java:76","message":"after getBookingAnalytics","data":{},"timestamp":1770986926488,"hypothesisId":"A"}
+{"location":"AdminController.java:82","message":"after getTopPerformers","data":{},"timestamp":1770986926521,"hypothesisId":"A"}
+{"location":"AdminController.java:88","message":"after getFinancialAnalytics, before return","data":{},"timestamp":1770986926548,"hypothesisId":"A,B"}
+{"timestamp":1771092019008,"location":"PaymentService.java:34","message":"@Value injection check","data":{"keyIsNull":false,"keyLength":107,"keyPrefix":"sk_test_51","keySuffix":"005ika8lJB","hasWhitespace":false},"sessionId":"debug-session","runId":"run1","hypothesisId":"A,B"}
+{"location":"GlobalExceptionLogger","message":"500 exception","data":{"requestUri":"/favicon.ico","type":"org.springframework.web.servlet.resource.NoResourceFoundException","message":"No static resource favicon.ico.","causeType":"null","causeMessage":"null"},"timestamp":1771092144575,"hypothesisId":"global"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1771092152575}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1771092152585,"hypothesisId":"A"}
+{"location":"AdminController.java:52","message":"before getOverviewStats","data":{},"timestamp":1771092152589,"hypothesisId":"A"}
+{"location":"AdminController.java:58","message":"after getOverviewStats","data":{},"timestamp":1771092153070,"hypothesisId":"A"}
+{"location":"AdminController.java:64","message":"after getUserAnalytics","data":{},"timestamp":1771092153137,"hypothesisId":"A"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771092153162,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771092153164,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771092153168,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771092153171,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771092153172,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771092153174,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771092153175,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771092153177,"hypothesisId":"C"}
+{"location":"AdminController.java:70","message":"after getRoomAnalytics","data":{},"timestamp":1771092153179,"hypothesisId":"A"}
+{"location":"AdminController.java:76","message":"after getBookingAnalytics","data":{},"timestamp":1771092153228,"hypothesisId":"A"}
+{"location":"AdminController.java:82","message":"after getTopPerformers","data":{},"timestamp":1771092153261,"hypothesisId":"A"}
+{"location":"AdminController.java:88","message":"after getFinancialAnalytics, before return","data":{},"timestamp":1771092153306,"hypothesisId":"A,B"}
+{"timestamp":1771094267888,"location":"PaymentService.java:34","message":"@Value injection check","data":{"keyIsNull":false,"keyLength":107,"keyPrefix":"sk_test_51","keySuffix":"005ika8lJB","hasWhitespace":false},"sessionId":"debug-session","runId":"run1","hypothesisId":"A,B"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1771094303130}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1771094303191,"hypothesisId":"A"}
+{"timestamp":1771094422367,"location":"PaymentService.java:34","message":"@Value injection check","data":{"keyIsNull":false,"keyLength":107,"keyPrefix":"sk_test_51","keySuffix":"005ika8lJB","hasWhitespace":false},"sessionId":"debug-session","runId":"run1","hypothesisId":"A,B"}
+{"location":"GlobalExceptionLogger","message":"500 exception","data":{"requestUri":"/.well-known/appspecific/com.chrome.devtools.json","type":"org.springframework.web.servlet.resource.NoResourceFoundException","message":"No static resource .well-known/appspecific/com.chrome.devtools.json.","causeType":"null","causeMessage":"null"},"timestamp":1771094441150,"hypothesisId":"global"}
+{"location":"GlobalExceptionLogger","message":"500 exception","data":{"requestUri":"/.well-known/appspecific/com.chrome.devtools.json","type":"org.springframework.web.servlet.resource.NoResourceFoundException","message":"No static resource .well-known/appspecific/com.chrome.devtools.json.","causeType":"null","causeMessage":"null"},"timestamp":1771094451772,"hypothesisId":"global"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/dashboard"},"timestamp":1771094475521}
+{"location":"DashboardController.java:34","message":"dashboard entry","data":{},"timestamp":1771094475526,"hypothesisId":"D"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1771094475547}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1771094475552,"hypothesisId":"A"}
+{"location":"AdminController.java:52","message":"before getOverviewStats","data":{},"timestamp":1771094475554,"hypothesisId":"A"}
+{"location":"AdminController.java:58","message":"after getOverviewStats","data":{},"timestamp":1771094476137,"hypothesisId":"A"}
+{"location":"AdminController.java:64","message":"after getUserAnalytics","data":{},"timestamp":1771094476211,"hypothesisId":"A"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094476279,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094476287,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094476289,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094476291,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094476295,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094476298,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094476300,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094476301,"hypothesisId":"C"}
+{"location":"AdminController.java:70","message":"after getRoomAnalytics","data":{},"timestamp":1771094476307,"hypothesisId":"A"}
+{"location":"AdminController.java:76","message":"after getBookingAnalytics","data":{},"timestamp":1771094476394,"hypothesisId":"A"}
+{"location":"AdminController.java:82","message":"after getTopPerformers","data":{},"timestamp":1771094476479,"hypothesisId":"A"}
+{"location":"AdminController.java:88","message":"after getFinancialAnalytics, before return","data":{},"timestamp":1771094476602,"hypothesisId":"A,B"}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/users"},"timestamp":1771094479185}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/rooms"},"timestamp":1771094482715}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/bookings"},"timestamp":1771094485588}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/payments"},"timestamp":1771094488866}
+{"location":"ExceptionLoggingFilter","message":"request","data":{"uri":"/admin/dashboard"},"timestamp":1771094491875}
+{"location":"AdminController.java:42","message":"dashboard entry","data":{},"timestamp":1771094491879,"hypothesisId":"A"}
+{"location":"AdminController.java:52","message":"before getOverviewStats","data":{},"timestamp":1771094491881,"hypothesisId":"A"}
+{"location":"AdminController.java:58","message":"after getOverviewStats","data":{},"timestamp":1771094491954,"hypothesisId":"A"}
+{"location":"AdminController.java:64","message":"after getUserAnalytics","data":{},"timestamp":1771094492061,"hypothesisId":"A"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094492079,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094492081,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094492083,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094492085,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094492087,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094492113,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094492115,"hypothesisId":"C"}
+{"location":"AdminService.java:row","message":"countRoomsByLocation row","data":{"row1Class":"java.lang.Long"},"timestamp":1771094492117,"hypothesisId":"C"}
+{"location":"AdminController.java:70","message":"after getRoomAnalytics","data":{},"timestamp":1771094492120,"hypothesisId":"A"}
+{"location":"AdminController.java:76","message":"after getBookingAnalytics","data":{},"timestamp":1771094492162,"hypothesisId":"A"}
+{"location":"AdminController.java:82","message":"after getTopPerformers","data":{},"timestamp":1771094492187,"hypothesisId":"A"}
+{"location":"AdminController.java:88","message":"after getFinancialAnalytics, before return","data":{},"timestamp":1771094492233,"hypothesisId":"A,B"}

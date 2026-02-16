@@ -1,0 +1,8 @@
+target
+**/target
+.git
+.idea
+.cursor
+*.iml
+*.log
+**/logs

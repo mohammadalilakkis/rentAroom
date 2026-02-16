@@ -27,8 +27,8 @@ public class RoomService {
         return roomRepository.findById(id);
     }
     
-    public List<Room> findAll() {
-        return roomRepository.findAll();
+    public List<Room> findAllAvailable() {
+        return roomRepository.findAvailableRooms("", LocalDate.now());
     }
     
     public List<Room> findByHost(User host) {

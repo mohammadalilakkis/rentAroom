@@ -64,7 +64,7 @@
                                     <span class="price-period">per night</span>
                                 </div>
                                 
-                                <form th:action="@{/bookings/create}" method="post" th:if="${user != null && user.role.name() != 'HOST' || user == null}">
+                                <form th:action="@{/bookings/create}" method="post" th:if="${user == null || (user.role != null && user.role.name() != 'HOST')}">
                                     <input type="hidden" name="roomId" th:value="${room.id}">
                                     
                                     <div class="form-group">

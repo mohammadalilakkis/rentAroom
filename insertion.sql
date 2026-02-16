@@ -1,41 +1,43 @@
 -- ================================================
--- 2️⃣ INSERT SAMPLE DATA
+-- 2️⃣ INSERT SAMPLE DATA (Lebanon)
 -- ================================================
 
 -- Users
 INSERT INTO users (name, email, password, phone, role)
 VALUES
-('Alice Johnson', 'alice@example.com', 'hashed_pw1', '1234567890', 'host'),
-('Bob Smith', 'bob@example.com', 'hashed_pw2', '0987654321', 'renter'),
-('Carol Lee', 'carol@example.com', 'hashed_pw3', '1112223333', 'host'),
-('David Brown', 'david@example.com', 'hashed_pw4', '4445556666', 'renter');
+('Rania Khoury', 'rania@example.com', 'hashed_pw1', '+961 3 123 456', 'host'),
+('Omar Fakhry', 'omar@example.com', 'hashed_pw2', '+961 70 987 654', 'renter'),
+('Layla Moussa', 'layla@example.com', 'hashed_pw3', '+961 1 234 567', 'host'),
+('Karim Haddad', 'karim@example.com', 'hashed_pw4', '+961 76 555 123', 'renter');
 
--- Rooms
+-- Rooms (Lebanese locations)
 INSERT INTO rooms (host_id, title, description, location, price, capacity, available_from, available_to)
 VALUES
-(1, 'Cozy Studio Downtown', 'A nice small apartment in the city center.', 'New York', 120.00, 2, '2025-10-01', '2025-12-31'),
-(3, 'Beachside Bungalow', 'Relaxing bungalow near the sea.', 'Los Angeles', 200.00, 4, '2025-09-15', '2025-12-31'),
-(1, 'Mountain Cabin Retreat', 'Peaceful cabin in the mountains.', 'Denver', 150.00, 5, '2025-11-01', '2026-02-01'),
-(1, 'Modern Luxury Apartment', 'Spacious and beautifully furnished apartment with stunning city views. Perfect for long-term stays with all modern amenities including WiFi, fully equipped kitchen, and parking.', 'New York', 180.00, 3, CURDATE(), '2028-12-31'),
-(3, 'Coastal Villa with Ocean View', 'Stunning beachfront property with private access to the ocean. Features include 3 bedrooms, 2 bathrooms, full kitchen, and outdoor patio. Ideal for extended vacations or long-term rental.', 'Los Angeles', 350.00, 6, CURDATE(), '2029-12-31');
+(1, 'Studio in Hamra, Beirut', 'Bright studio in the heart of Hamra. Walking distance to cafés, AUB, and the corniche. WiFi, AC, and a small balcony.', 'Beirut', 65.00, 2, '2025-10-01', '2025-12-31'),
+(3, 'Sea View Apartment, Jounieh', 'Apartment with Mediterranean view in Jounieh. Near the cable car and beach. 2 bedrooms, kitchen, parking.', 'Jounieh', 95.00, 4, '2025-09-15', '2025-12-31'),
+(1, 'Charming Old House in Byblos', 'Traditional stone house in the old souk area of Byblos (Jbeil). Steps from the port and ruins. AC, WiFi.', 'Byblos', 85.00, 4, '2025-11-01', '2026-02-01'),
+(1, 'Modern Flat in Verdun, Beirut', 'Spacious furnished apartment in Verdun with city views. WiFi, full kitchen, parking. Ideal for long-term stays.', 'Beirut', 120.00, 3, CURDATE(), '2028-12-31'),
+(3, 'Villa with Pool in Batroun', 'Beachside villa with private pool and garden in Batroun. 3 bedrooms, 2 bathrooms, terrace. Perfect for families or groups.', 'Batroun', 220.00, 6, CURDATE(), '2029-12-31'),
+(1, 'Cozy Room in Achrafieh', 'Single room in a shared flat in Achrafieh. Central, safe, and close to nightlife and restaurants.', 'Beirut', 35.00, 1, CURDATE(), '2026-12-31'),
+(3, 'Apartment Near Tyre Beach', 'Simple apartment a short walk from the sea in Tyre (Sour). Kitchen, AC, quiet neighborhood.', 'Tyre', 55.00, 3, CURDATE(), '2026-06-30');
 
 -- Bookings
 INSERT INTO bookings (room_id, renter_id, check_in, check_out, total_price, status)
 VALUES
-(1, 2, '2025-10-10', '2025-10-15', 600.00, 'confirmed'),
-(2, 4, '2025-10-20', '2025-10-25', 1000.00, 'pending');
+(1, 2, '2025-10-10', '2025-10-15', 325.00, 'confirmed'),
+(2, 4, '2025-10-20', '2025-10-25', 475.00, 'pending');
 
 -- Payments
 INSERT INTO payments (booking_id, amount, payment_method, status)
 VALUES
-(1, 600.00, 'credit_card', 'paid'),
-(2, 1000.00, 'paypal', 'pending');
+(1, 325.00, 'credit_card', 'paid'),
+(2, 475.00, 'paypal', 'pending');
 
 -- Reviews
 INSERT INTO reviews (room_id, renter_id, rating, comment)
 VALUES
-(1, 2, 5, 'Great location and very clean!'),
-(2, 4, 4, 'Beautiful view, but a bit noisy at night.');
+(1, 2, 5, 'Perfect location and very clean. Would stay again!'),
+(2, 4, 4, 'Amazing sea view. Batroun is beautiful.');
 
 -- ================================================
 -- 3️⃣ SELECT EXAMPLES
