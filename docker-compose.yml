@@ -1,0 +1,35 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootmysql@123pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootmysql@123pass"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./.cursor:/app/.cursor
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/rent_a_room?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: rentaroom
+      SPRING_DATASOURCE_PASSWORD: rentaroom
+      STRIPE_SECRET_KEY: sk_test_51StyKmAw0stATI6QZnsKgbCZHn7w53GcQasHAs9unEKzckofjZWOT251HuSC1zxfGhXSdtSURnU8ZVfIvUYg63XP005ika8lJB
+      STRIPE_PUBLIC_KEY: pk_test_51StyKmAw0stATI6QzLqa1hACj5UVL6cWdaRGzLy1JUwUih1nNmdrqs9DxYZapicsDRthC0Zmvq3yt0ryDUKCGLAX006BmH7p5b
+      STRIPE_CURRENCY: usd
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db_data:

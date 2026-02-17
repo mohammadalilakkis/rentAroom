@@ -82,8 +82,8 @@
                         <div class="recent-list">
                             <div th:each="recentUser : ${userAnalytics.recentUsers}" class="recent-item">
                                 <span th:text="${recentUser.name}">User</span>
-                                <span class="role-badge" th:text="${recentUser.role.name()}">ROLE</span>
-                                <small th:text="${#temporals.format(recentUser.createdAt, 'MMM dd, yyyy')}">Date</small>
+                                <span class="role-badge" th:text="${recentUser.role != null ? recentUser.role.name() : 'N/A'}">ROLE</span>
+                                <small th:text="${recentUser.createdAt != null ? #temporals.format(recentUser.createdAt, 'MMM dd, yyyy') : 'N/A'}">Date</small>
                             </div>
                         </div>
                     </div>

@@ -54,7 +54,7 @@
                                 <td th:text="${user.email}">user@example.com</td>
                                 <td th:text="${user.phone ?: 'N/A'}">N/A</td>
                                 <td>
-                                    <span class="role-badge" th:text="${user.role.name()}">ROLE</span>
+                                    <span class="role-badge" th:text="${user.role != null ? user.role.name() : 'N/A'}">ROLE</span>
                                 </td>
                                 <td th:text="${#temporals.format(user.createdAt, 'MMM dd, yyyy')}">Date</td>
                                 <td>

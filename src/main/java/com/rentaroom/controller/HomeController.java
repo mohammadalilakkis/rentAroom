@@ -28,7 +28,7 @@ public class HomeController {
         if (location != null || maxPrice != null) {
             model.addAttribute("rooms", roomService.searchAvailableRooms(location, maxPrice));
         } else {
-            model.addAttribute("rooms", roomService.findAll());
+            model.addAttribute("rooms", roomService.findAllAvailable());
         }
         
         model.addAttribute("location", location);
